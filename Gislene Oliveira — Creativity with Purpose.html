@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gislene Oliveira — Creativity with Purpose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0a;
+    --paper:#f2efe6;
+    --paper-dim:#e9e4d6;
+    --concrete:#8f897c;
+    --concrete-dark:#4a463d;
+    --oxblood:#5c1c1a;
+    --line: rgba(11,11,10,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  ::selection{background:var(--ink);color:var(--paper);}
+
+  .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--concrete-dark);
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:2rem;
+    padding:1.1rem 5vw;
+    background:rgba(242,239,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .name{
+    font-family:'Bodoni Moda', serif;
+    font-weight:600;
+    font-size:1.6rem;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  nav{display:flex;gap:2.2rem;}
+  nav a{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    position:relative;
+    padding-bottom:2px;
+  }
+  nav a.active{color:var(--oxblood);}
+  nav a::after{
+    content:'';
+    position:absolute;left:0;bottom:-3px;
+    width:0;height:1px;background:var(--oxblood);
+    transition:width .25s ease;
+  }
+  nav a:hover::after{width:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    align-items:stretch;
+    padding:0 5vw;
+    gap:3vw;
+  }
+  .hero-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:4rem 0;
+    z-index:3;
+  }
+  .hero-text .eyebrow{margin-bottom:1.6rem;}
+  .hero-text h1{
+    font-family:'Bodoni Moda', serif;
+    font-weight:500;
+    font-size:clamp(2.8rem, 7vw, 5.6rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+  }
+  .hero-text h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--oxblood);
+  }
+  .hero-text .tagline{
+    margin-top:1.8rem;
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--concrete-dark);
+    max-width:26ch;
+  }
+  /* ---------- ARCHITECTURAL SIGNATURE GRAPHIC ---------- */
+  .structure{
+    position:relative;
+    z-index:1;
+  }
+  .slab{
+    position:absolute;
+    background:linear-gradient(155deg, #d8d3c4 0%, #b6b0a0 55%, #948e7d 100%);
+    box-shadow: 0 30px 60px -20px rgba(11,11,10,0.45);
+  }
+  .slab.s1{
+    top:8%;
+    right:-6%;
+    width:78%;
+    height:16%;
+    transform:skewY(-3deg) rotate(-1deg);
+    background:linear-gradient(160deg,#2a2823 0%, #4a463d 60%, #6b6558 100%);
+    box-shadow: 0 40px 70px -18px rgba(11,11,10,0.55);
+  }
+  .slab.s2{
+    top:34%;
+    right:2%;
+    width:56%;
+    height:9%;
+    background:linear-gradient(150deg,#c9c3b3 0%, #a19a89 100%);
+    transform:rotate(0.6deg);
+  }
+  .slab.s3{
+    top:46%;
+    right:-4%;
+    width:70%;
+    height:38%;
+    background:linear-gradient(170deg,#e4dfd0 0%, #cdc7b6 100%);
+    box-shadow: 0 20px 50px -25px rgba(11,11,10,0.35);
+  }
+  .slab.ledge{
+    top:78%;
+    right:8%;
+    width:52%;
+    height:7%;
+    background:linear-gradient(90deg,#3a372f 0%, #5c574b 100%);
+    z-index:4;
+  }
+  .structure .label{
+    position:absolute;
+    top:12%;
+    right:4%;
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--paper);
+    letter-spacing:0.04em;
+    z-index:5;
+  }
+  @media (max-width:900px){
+    header .name{font-size:1.3rem;}
+    nav{gap:1.4rem;}
+  }
+  @media (max-width:600px){
+    header .name{font-size:1.15rem;}
+    nav{gap:1rem;}
+    nav a{font-size:0.62rem;}
+  }
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;}
+    .structure{display:none;}
+    .hero-text{padding:3rem 0 2rem;}
+  }
+
+  /* ---------- MANIFESTO PULL QUOTE ---------- */
+  .manifesto{
+    padding:9rem 5vw;
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+  }
+  .manifesto::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--concrete), transparent);
+  }
+  .manifesto p{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(2rem, 5vw, 3.6rem);
+    line-height:1.18;
+    max-width:20ch;
+  }
+  .manifesto .mark{
+    color:var(--oxblood);
+  }
+
+  /* ---------- BODY / ESSAY ---------- */
+  .essay{
+    padding:8rem 5vw;
+    display:grid;
+    grid-template-columns:0.7fr 1.6fr;
+    gap:5vw;
+  }
+  .essay .col-label{
+    font-family:'Bodoni Moda', serif;
+    font-size:1.6rem;
+    font-style:italic;
+    align-self:start;
+    position:sticky;
+    top:7rem;
+  }
+  .essay .col-label .eyebrow{display:block;margin-bottom:0.9rem;}
+  .essay-copy p{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:#2a2823;
+    margin-bottom:1.6rem;
+    max-width:62ch;
+  }
+  .essay-copy p:first-of-type::first-letter{
+    font-family:'Bodoni Moda', serif;
+    font-size:4.2rem;
+    font-weight:600;
+    float:left;
+    line-height:0.78;
+    padding-right:0.5rem;
+    padding-top:0.3rem;
+    color:var(--oxblood);
+  }
+  @media (max-width:860px){
+    .essay{grid-template-columns:1fr;}
+    .essay .col-label{position:static;}
+  }
+
+  /* ---------- CLOSING STATEMENT ---------- */
+  .closing{
+    padding:10rem 5vw 8rem;
+    text-align:center;
+    position:relative;
+  }
+  .closing .rule{
+    width:1px;height:5rem;
+    background:var(--concrete);
+    margin:0 auto 3rem;
+  }
+  .closing p{
+    font-family:'Bodoni Moda', serif;
+    font-size:clamp(1.6rem, 4vw, 2.6rem);
+    line-height:1.35;
+    max-width:26ch;
+    margin:0 auto;
+  }
+  .closing p + p{margin-top:0.4rem;}
+  .closing .sign{
+    margin-top:3rem;
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--concrete-dark);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:3.5rem 5vw;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1.5rem;
+  }
+  footer .name{
+    font-family:'Bodoni Moda', serif;
+    font-size:1rem;
+  }
+  footer .links{display:flex;gap:2rem;}
+  footer a{
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    border-bottom:1px solid transparent;
+  }
+  footer a:hover{border-color:var(--oxblood);color:var(--oxblood);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">GISLENE OLIVEIRA</div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="portfolio.html">A Little of Everything</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Personal Manifesto</span>
+    <h1>Creativity<br>with <em>Purpose</em></h1>
+    <p class="tagline">Gislene Oliveira — on fashion, design, business, and the ideas that connect them.</p>
+  </div>
+
+  <div class="structure" aria-hidden="true">
+    <div class="slab s3"></div>
+    <div class="slab s2"></div>
+    <div class="slab s1"></div>
+    <span class="label">Creativity with Purpose</span>
+    <div class="slab ledge"></div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <p>“I believe creativity only matters <span class="mark">when it transforms</span> something.”</p>
+</section>
+
+<section class="essay">
+  <div class="col-label">
+    <span class="eyebrow">The Idea</span>
+    A universe held together<br>by one pursuit.
+  </div>
+  <div class="essay-copy">
+    <p>My journey began in communication, marketing, and creative work, but my interests have never fit neatly into a single field. Fashion, art, design, business, innovation, and human behavior are all part of my universe because, to me, they are connected by the same pursuit: to create, to learn, and to find meaning in the things I do.</p>
+    <p>I am driven by ideas, curiosity, and the desire to do well whatever I choose to do. I value beauty, intelligence, authenticity, and anything that inspires a different perspective.</p>
+    <p>I believe our time is far too valuable to be spent on things that do not add something meaningful to our lives.</p>
+    <p>That is why I am intentional about where I invest my energy, who I choose to share my time with, and which ideas deserve my attention.</p>
+    <p>This space brings together some of what inspires me, what I have been creating, and the things that spark my curiosity.</p>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="rule"></div>
+  <p>Because, ultimately, I believe a good idea can change a trajectory.</p>
+  <p>And a trajectory can change far more than we imagine.</p>
+  <div class="sign">— Gislene</div>
+</section>
+
+<footer>
+  <div class="name">GISLENE OLIVEIRA</div>
+  <div class="links">
+    <a href="portfolio.html">A Little of Everything</a>
+    <a href="portfolio.html#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

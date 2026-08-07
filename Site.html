@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little of Everything — Gislene Oliveira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0a;
+    --paper:#f2efe6;
+    --concrete:#8f897c;
+    --concrete-dark:#4a463d;
+    --oxblood:#5c1c1a;
+    --line: rgba(11,11,10,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--ink);color:var(--paper);}
+
+  .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--concrete-dark);
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:2rem;
+    padding:1.1rem 5vw;
+    background:rgba(242,239,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header .name{font-family:'Bodoni Moda', serif;font-weight:600;font-size:1.6rem;letter-spacing:0.01em;white-space:nowrap;}
+  nav{display:flex;gap:2.2rem;}
+  nav a{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;position:relative;padding-bottom:2px;}
+  nav a.active{color:var(--oxblood);}
+  nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--oxblood);transition:width .25s ease;}
+  nav a:hover::after{width:100%;}
+
+  @media (max-width:900px){
+    header .name{font-size:1.3rem;}
+    nav{gap:1.4rem;}
+  }
+  @media (max-width:600px){
+    header .name{font-size:1.15rem;}
+    nav{gap:1rem;}
+    nav a{font-size:0.62rem;}
+  }
+  .intro{
+    padding:6.5rem 5vw 4rem;
+    max-width:900px;
+  }
+  .intro h1{
+    font-family:'Bodoni Moda', serif;
+    font-weight:500;
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1;
+  }
+  .intro h1 em{font-style:italic;color:var(--oxblood);font-weight:400;}
+  .intro p{
+    margin-top:1.6rem;
+    font-size:1.05rem;
+    line-height:1.7;
+    max-width:58ch;
+    color:#2a2823;
+  }
+
+  /* ---------- FIELD GRID ---------- */
+  .fields{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    border-top:1px solid var(--line);
+  }
+  .field{
+    padding:4rem 5vw;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    min-height:340px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+  }
+  .field:nth-child(odd){border-right:1px solid var(--line);}
+  .field .num{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--concrete-dark);
+  }
+  .field h2{
+    font-family:'Bodoni Moda', serif;
+    font-weight:500;
+    font-size:clamp(1.8rem, 3.2vw, 2.6rem);
+    margin-top:1rem;
+  }
+  .field p{
+    margin-top:1rem;
+    font-size:0.98rem;
+    line-height:1.65;
+    color:#2a2823;
+    max-width:40ch;
+  }
+  .field .tag{
+    margin-top:2rem;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--concrete);
+    border:1px solid var(--line);
+    display:inline-block;
+    padding:0.4rem 0.8rem;
+    width:fit-content;
+  }
+  .field .mono{
+    position:absolute;
+    right:-2rem;bottom:-2rem;
+    width:180px;height:180px;
+    background:linear-gradient(155deg, transparent 40%, var(--line) 40%);
+    opacity:0.9;
+  }
+  @media (max-width:760px){
+    .fields{grid-template-columns:1fr;}
+    .field:nth-child(odd){border-right:none;}
+  }
+
+  /* ---------- WORK STRIP (placeholder projects) ---------- */
+  .work{
+    padding:8rem 5vw;
+  }
+  .work .head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:3rem;
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+  .work .head h2{
+    font-family:'Bodoni Moda', serif;
+    font-weight:500;
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+  }
+  .work .head p{
+    font-size:0.85rem;
+    color:var(--concrete-dark);
+    max-width:34ch;
+  }
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.5px;
+    background:var(--line);
+  }
+  .work-item{
+    background:var(--paper);
+    aspect-ratio:4/5;
+    padding:1.6rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    position:relative;
+  }
+  .work-item .fill{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(155deg, #d8d3c4 0%, #b6b0a0 55%, #948e7d 100%);
+    opacity:0.5;
+    z-index:0;
+  }
+  .work-item:nth-child(2) .fill{background:linear-gradient(160deg,#2a2823 0%, #4a463d 100%); opacity:0.65;}
+  .work-item:nth-child(3) .fill{background:linear-gradient(150deg,#c9c3b3 0%, #a19a89 100%); opacity:0.5;}
+  .work-item:nth-child(5) .fill{background:linear-gradient(170deg,#e4dfd0 0%, #cdc7b6 100%); opacity:0.6;}
+  .work-item span{
+    position:relative;z-index:1;
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-size:1.1rem;
+  }
+  .work-item small{
+    position:relative;z-index:1;
+    font-size:0.65rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--concrete-dark);
+    margin-top:0.4rem;
+  }
+  @media (max-width:760px){
+    .work-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  .note{
+    margin-top:2.5rem;
+    font-size:0.8rem;
+    color:var(--concrete-dark);
+    font-style:italic;
+    font-family:'Bodoni Moda', serif;
+  }
+
+  /* ---------- CONTACT ---------- */
+  #contact{
+    background:var(--ink);
+    color:var(--paper);
+    padding:8rem 5vw 6rem;
+  }
+  #contact .eyebrow{color:var(--concrete);}
+  #contact h2{
+    font-family:'Bodoni Moda', serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    margin-top:1rem;
+    max-width:16ch;
+  }
+  .contact-grid{
+    margin-top:3.5rem;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2rem;
+    border-top:1px solid rgba(242,239,230,0.18);
+    padding-top:2.5rem;
+  }
+  .contact-grid div span{
+    display:block;
+    font-size:0.66rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--concrete);
+    margin-bottom:0.6rem;
+  }
+  .contact-grid div a, .contact-grid div p{
+    font-size:1rem;
+  }
+  .contact-grid div a{
+    border-bottom:1px solid rgba(242,239,230,0.35);
+  }
+  .contact-grid div a:hover{border-color:var(--paper);}
+  @media (max-width:760px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  footer{
+    background:var(--ink);
+    color:var(--concrete);
+    padding:2.5rem 5vw;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">GISLENE OLIVEIRA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html" class="active">A Little of Everything</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <span class="eyebrow">My World</span>
+  <h1>What I'm <em>building</em>,<br>what I'm drawn to.</h1>
+  <p>This space brings together some of what inspires me, what I have been creating, and the things that spark my curiosity — organized around the fields I move between.</p>
+</section>
+
+<section class="fields">
+  <div class="field">
+    <span class="num">01</span>
+    <h2>Fashion</h2>
+    <p>Style as a language — how what we wear communicates before we speak.</p>
+    <span class="tag">Add your work</span>
+    <div class="mono"></div>
+  </div>
+  <div class="field">
+    <span class="num">02</span>
+    <h2>Design & Art</h2>
+    <p>Beauty and intention in objects, spaces, and images.</p>
+    <span class="tag">Add your work</span>
+    <div class="mono"></div>
+  </div>
+  <div class="field">
+    <span class="num">03</span>
+    <h2>Business & Innovation</h2>
+    <p>Ideas that move — strategy, new models, and the way things change.</p>
+    <span class="tag">Add your work</span>
+    <div class="mono"></div>
+  </div>
+  <div class="field">
+    <span class="num">04</span>
+    <h2>Human Behavior</h2>
+    <p>Why people do what they do, and what that reveals.</p>
+    <span class="tag">Add your work</span>
+    <div class="mono"></div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="head">
+    <h2>Selected Work</h2>
+    <p class="eyebrow">Projects, essays, and things I have been creating</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+    <div class="work-item"><div class="fill"></div><span>Project title</span><small>Category — Year</small></div>
+  </div>
+  <p class="note">Placeholder tiles — swap in your own projects, essays, or images as you create them.</p>
+</section>
+
+<section id="contact">
+  <span class="eyebrow">Get in touch</span>
+  <h2>Let's talk about ideas worth your time.</h2>
+  <div class="contact-grid">
+    <div>
+      <span>Email</span>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+    <div>
+      <span>Instagram</span>
+      <a href="#">@gisleneoliveira</a>
+    </div>
+    <div>
+      <span>LinkedIn</span>
+      <a href="#">/in/gisleneoliveira</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Gislene Oliveira © 2026</span>
+  <span>Creativity with Purpose</span>
+</footer>
+
+</body>
+</html>
